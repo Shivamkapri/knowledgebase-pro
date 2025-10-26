@@ -23,8 +23,16 @@ class Settings(BaseSettings):
     vector_store_dir: str = Field(default=os.getenv("VECTOR_STORE_DIR", "./chroma_db"), alias="VECTOR_STORE_DIR")
     collection_name: str = Field(default=os.getenv("COLLECTION_NAME", "rag_docs"), alias="COLLECTION_NAME")
 
-    # CORS / server
-    allowed_origins: List[str] = Field(default_factory=lambda: ["*"])
+    # CORS / server - allow React dev server and production origins
+    allowed_origins: List[str] = Field(
+        default_factory=lambda: [
+            "http://localhost:3000",  # React dev server
+            "http://127.0.0.1:3000",  # React dev server alternative
+            "http://localhost:8000",  # Production server
+            "http://127.0.0.1:8000",  # Production server alternative
+            "*"  # Allow all for development (remove in production)
+        ]
+    )
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

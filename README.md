@@ -1,3 +1,13 @@
+to run backend server
+
+cd /d/aaaaaINTERNSHIP/ragchatbot && /d/aaaaaINTERNSHIP/ragchatbot/.venv/Scripts/python.exe -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+
+to run frontend server
+cd /d/aaaaaINTERNSHIP/ragchatbot/frontend-react && npm run dev
+
+
+
 add a safe “fallback to internet” behavior  addedno
 
 Short setup & run
@@ -32,23 +42,52 @@ PYTHONPATH=. .venv/Scripts/python.exe scripts/ingest_from_uploads.py
 
 5) Start the app
 
+**Option A: Full-stack development (React + FastAPI):**
+```bash
+# Setup React frontend (first time only)
+cd frontend-react && npm install
+
+# Start both backend and frontend
+scripts/dev_full_stack.bat  # Windows
+scripts/dev_full_stack.sh   # Linux/Mac
+```
+- React Frontend: http://localhost:3000
+- FastAPI Backend: http://localhost:8000
+
+**Option B: Backend only with simple frontend:**
 ```bash
 PYTHONPATH=. .venv/Scripts/python.exe -m uvicorn app.main:app --reload --port 8000
 ```
+- Simple Frontend: http://127.0.0.1:8000
 
-6) Open UI: http://127.0.0.1:8000
+## 🚀 Frontend Options
 
-Helpful: there are convenience scripts in `scripts/` to automate these steps (`run_dev.sh` and `run_dev.bat`).
+### Modern React Frontend (Recommended)
+- **Location**: `frontend-react/`
+- **Tech Stack**: React + Vite + Tailwind CSS + Axios
+- **Features**: Modern UI, responsive design, real-time updates
+- **Development**: `cd frontend-react && npm run dev`
+- **Production**: `cd frontend-react && npm run build`
+
+### Simple Frontend (Legacy)
+- **Location**: `frontend/`
+- **Tech Stack**: HTML + CSS + Vanilla JavaScript  
+- **Use Case**: Quick testing, minimal setup
+
+Helpful: there are convenience scripts in `scripts/` to automate setup and development.
 # RAG Chatbot (LangChain + Gemini)
 
-Backend-first Retrieval-Augmented Generation (RAG) chatbot using LangChain, FastAPI, and Chroma, powered by Google Gemini (you can set the key in `GEMMI_API_KEY` or `GOOGLE_API_KEY`). A minimal frontend is included for testing.
+Advanced Retrieval-Augmented Generation (RAG) chatbot with modern React frontend, using LangChain, FastAPI, and Chroma, powered by Google Gemini. Features ChatGPT-like interface with chat persistence and web search fallback.
 
-## Features
-- Ingest local files (PDF, TXT) via `/ingest` (multipart upload)
-- Store embeddings in Chroma (local persistent directory)
-- Query with `/chat` using retrieved context
-- Configurable via environment variables
-- Minimal static frontend for quick testing
+## 🎯 Features
+- **📱 Modern React Frontend**: ChatGPT-like interface with Tailwind CSS
+- **💬 Chat Persistence**: MongoDB-backed chat history and sessions
+- **📄 PDF Knowledge Base**: Ingest PDFs from `data/uploads` folder
+- **🌐 Web Search Fallback**: SerpAPI integration when local knowledge insufficient  
+- **⚙️ Response Controls**: Adjustable length (Short/Medium/Long/Very Long)
+- **👍👎 Feedback System**: Like/dislike responses for continuous improvement
+- **🏷️ Auto-Generated Titles**: Smart chat naming based on content
+- **🔧 RESTful API**: FastAPI backend with full OpenAPI documentation
 
 ## Quickstart
 

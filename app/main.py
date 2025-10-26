@@ -34,7 +34,13 @@ async def health():
     return {"status": "ok"}
 
 
-# Serve minimal frontend for testing
-FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
-if FRONTEND_DIR.exists():
-    app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
+# Serve frontend (React build or fallback to simple frontend)
+REACT_DIST_DIR = Path(__file__).resolve().parent.parent / "frontend-react" / "dist"
+SIMPLE_FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+
+if REACT_DIST_DIR.exists():
+    # Serve React production build
+    app.mount("/", StaticFiles(directory=str(REACT_DIST_DIR), html=True), name="react-frontend")
+elif SIMPLE_FRONTEND_DIR.exists():
+    # Fallback to simple frontend
+    app.mount("/", StaticFiles(directory=str(SIMPLE_FRONTEND_DIR), html=True), name="simple-frontend")
