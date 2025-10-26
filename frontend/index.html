@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAG Chatbot Test UI</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-root">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <h2>Chats</h2>
+        <button id="new-chat">+ New Chat</button>
+      </div>
+      <ul id="chat-list"></ul>
+    </aside>
+
+    <main class="main">
+      <header>
+        <h1 id="chat-title">Select or create a chat</h1>
+      </header>
+      <section id="messages" class="messages"></section>
+      <form id="chat-form" class="chat-form">
+        <div class="input-controls">
+          <input type="text" id="question" placeholder="Type your question..." autocomplete="off" required />
+          <div class="response-controls">
+            <label for="response-length">Response Length:</label>
+            <select id="response-length">
+              <option value="500">Short (500 tokens)</option>
+              <option value="1000" selected>Medium (1000 tokens)</option>
+              <option value="2000">Long (2000 tokens)</option>
+              <option value="4000">Very Long (4000 tokens)</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Send</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

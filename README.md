@@ -128,20 +128,3 @@ PYTHONPATH=. .venv/Scripts/python.exe -m uvicorn app.main:app --reload --port 80
 CTRL+C
 
 PYTHONPATH=. .venv/Scripts/python.exe -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
-
-
-
-.env
-MONGODB_URI=#####
-
-GEMMI_API_KEY=#####
-
-SERPAPI_API_KEY=#####
-
-# Optional: where to store Chroma vectors
-VECTOR_STORE_DIR=./chroma_db
-
-# Models
-LLM_MODEL=gemini-2.0-flash
-EMBEDDING_MODEL=text-embedding-004

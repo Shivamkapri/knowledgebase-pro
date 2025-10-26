@@ -1,0 +1,12 @@
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #0b1020; color: #e7e9ee; }
+.container { max-width: 900px; margin: 2rem auto; padding: 1.5rem; background: #121936; border-radius: 12px; border: 1px solid #2b2f55; }
+h1 { margin-top: 0; }
+section { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #2b2f55; }
+input[type="text"] { flex: 1; padding: 0.6rem; border-radius: 8px; border: 1px solid #2b2f55; background: #0f1530; color: #fff; }
+select { padding: 0.5rem; border-radius: 6px; border: 1px solid #2b2f55; background: #0f1530; color: #fff; font-size: 0.9rem; }
+button { padding: 0.6rem 1rem; margin-left: 0.5rem; border-radius: 8px; border: 1px solid #3d66f5; background: #3d66f5; color: white; cursor: pointer; }
+.input-controls { display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem; }
+.response-controls { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+.response-controls label { white-space: nowrap; }
+pre, #answer, #sources { background: #0f1530; padding: 0.8rem; border-radius: 8px; border: 1px solid #2b2f55; overflow: auto; }
+summary { cursor: pointer; }
